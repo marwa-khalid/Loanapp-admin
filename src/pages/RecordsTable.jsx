@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './records.css';
 import { FiCalendar } from 'react-icons/fi';
 
-function RecordsTable() {
+function RecordsTable({ searchTerm }) {
   const [loanData, setLoanData] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);

@@ -64,8 +64,8 @@ const LoginPage = () => {
     marginTop:"10px",
   };
 
-  const [email, setEmail] = useState("admin@dhaninstant.com");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [emailErr, setEmailError] = useState("");
   const [passErr, setPassError] = useState("");
   const [Err, setError] = useState("");
