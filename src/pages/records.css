@@ -1,0 +1,41 @@
+body{
+    
+    font-family: 'Inter';
+}
+.datePicker {
+    width: 150px;
+    height: 5px;
+    padding: 16px 8px 16px 16px;
+    border-radius: 16px;
+    border: transparent;
+  }
+
+  .datePicker:focus {
+    width: 150px;
+    height: 5px;
+    padding: 16px 8px 16px 16px;
+    border-radius: 16px;
+    border: 1px solid #216FF4;
+  }
+
+
+  .button{
+    color:"#216FF4";
+    height:100;
+    width:145;
+    border-radius:12;
+    border:1px #216FF4 solid;
+    margin-top:12;
+    align-items:"flex-end" 
+  }
+
+  table {
+    font-size: 12px;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 8px; /* Example padding */
+  }
