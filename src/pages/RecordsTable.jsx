@@ -9,7 +9,6 @@ function RecordsTable({ searchTerm }) {
   const [loanData, setLoanData] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -32,10 +31,6 @@ function RecordsTable({ searchTerm }) {
     setEndDate(date);
   };
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
   const filteredRecords = loanData.filter((record) => {
     const recordDate = new Date(record.createdAt);
     const meetsDateCriteria =
@@ -56,7 +51,6 @@ function RecordsTable({ searchTerm }) {
   };
 
   const handleSearchClick = () => {
-    // You can add additional logic here if needed
     fetchData(); 
   }
 
