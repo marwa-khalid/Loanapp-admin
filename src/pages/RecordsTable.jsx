@@ -16,7 +16,7 @@ function RecordsTable({ searchTerm }) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://loanapp-server-production.up.railway.app/loans');
+      const response = await axios.get('https://loanapp-server.vercel.app/loans');
       setLoanData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
