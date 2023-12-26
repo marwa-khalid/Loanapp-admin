@@ -1,28 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './records.css';
-import { FiCalendar } from 'react-icons/fi';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database';
+import 'firebase/compat/firestore';
 
 function RecordsTable({ searchTerm }) {
   const [loanData, setLoanData] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfP7hRKKLjiKeW7U2ScYIBH-vLaIYiFtI",
+    authDomain: "phone-auth-42cba.firebaseapp.com",
+    projectId: "phone-auth-42cba",
+    storageBucket: "phone-auth-42cba.appspot.com",
+    messagingSenderId: "125579364412",
+    appId: "1:125579364412:web:9e604129a12c0d17a25b39"
+  }
+
   useEffect(() => {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://loanapp-server.vercel.app/loans');
-      setLoanData(response.data);
+      const database = firebase.database();
+      const loansRef = database.ref('loans');
+
+      console.log(loansRef)
+      console.log('Firebase initialized:', firebase.apps.length > 0);
+      console.log('Database reference:', loansRef.toString());
+      
+      // Attach an asynchronous callback to read the data
+      loansRef.once('value').then((snapshot) => {
+        const data = snapshot.val();
+        console.log('Data fetched with once:', data);
+        if (data) {
+          // Convert the data object to an array
+          const dataArray = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+          setLoanData(dataArray);
+          console.log(dataArray)
+        } else {
+          setLoanData([]);
+          console.log("hi")
+        }
+      });
+
+
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching data:', error.message);
     }
   };
-
+    
   const handleStartDateChange = (date) => {
     setStartDate(date);
   };
