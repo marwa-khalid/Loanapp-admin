@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/admin.jpg';
+import logo from '../images/admin.png';
 import home from '../images/home.jpg';
 import logoutIcon from '../images/logout.jpg';
 import {useDispatch} from "react-redux";
@@ -15,7 +15,7 @@ function Sidebar() {
   return (
     <div style={{ width: '200px', backgroundColor: '#fff', color: '#216FF4', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <img src={logo} alt="Logo" style={{ width: '50%', alignItems: 'center' }} />
+        <img src={logo} alt="Logo" style={{ width: '70%', alignItems: 'center' }} />
       </div>
       <p style={{ width:"80%", textAlign: 'start', color: 'black'}}>Main</p>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/admin.jpg';  
+import logo from '../images/admin.png';  
 import bg from '../images/background.jpg';  
 import { useState } from 'react';
 import {useDispatch } from 'react-redux';
@@ -36,11 +36,11 @@ const LoginPage = () => {
     borderRadius: '16px',
     textAlign: 'center',
     width:300,
-    height:450
+    height:390
   };
 
   const logoStyle = {
-    width: '100px', // Adjust the size as needed
+    width: '130px', // Adjust the size as needed
   };
 
   const inputStyle = {
