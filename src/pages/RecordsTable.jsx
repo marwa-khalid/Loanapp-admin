@@ -117,7 +117,7 @@ function RecordsTable({ searchTerm }) {
   }
 
   return (
-    <div style={{ padding: 30, backgroundColor: 'white', marginRight: 30, marginLeft: 30, borderRadius: 12}}>
+    <div style={{ padding: 30, backgroundColor: 'white', marginRight: 30, marginLeft: 30, borderRadius: 12,}}>
       <div style={{ display: 'flex'}} >
         <div style={{ display: 'flex', marginBottom: '20px',width:700, borderRadius: 16, backgroundColor: '#F8F8F8', padding: 25 }}>
           <div>

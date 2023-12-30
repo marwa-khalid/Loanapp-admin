@@ -5,8 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-x: scroll;
-  height: fit-content;
+  position: fixed;
   overflow-y: hidden;
 }
 
