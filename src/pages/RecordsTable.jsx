@@ -108,7 +108,7 @@ function RecordsTable({ searchTerm }) {
   const tableBodyCellStyle = {
     border: '1px solid #ddd',
     padding: '10px',
-    width:"max-content"
+    width:"max-content",
   };
 
   const heading = {
@@ -148,9 +148,9 @@ function RecordsTable({ searchTerm }) {
         </div>
        
       </div>
-      <div style={{ borderRadius: 30 }}>
+      <div style={{ borderRadius: 30,overflow: 'auto', maxHeight: '500px' }}>
       <p >Total Records: {filteredRecords.length}</p>
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+        <table style={{width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
           <thead>
             <tr>
               <th style={tableHeaderStyle}>NO.</th>
