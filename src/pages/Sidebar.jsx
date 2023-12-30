@@ -20,10 +20,10 @@ function Sidebar() {
       <p style={{ width:"80%", textAlign: 'start', color: 'black'}}>Main</p>
 
         <button onClick={stayOnMain} style={{ textAlign: 'start', backgroundColor: 'white', color: '#216FF4', padding: '10px', marginBottom: '10px', borderRadius: '8px', width:"90% ", borderColor:"#216FF4", fontWeight:"bold", borderWidth:"1px" }}>
-          <img src={home} style={{width:"12%",marginRight:10}} />Home
+          <img src={home} style={{width:"40%",marginRight:10}} />Home
         </button>
         <button onClick={handleLogout} style={{ textAlign: 'start', backgroundColor: 'white', color: '#5C5E64', padding: '10px', borderRadius: '8px',borderColor:"transparent",width:"90% ",fontWeight:"bold" }}>
-        <img src={logoutIcon} style={{width:"12%",marginRight:10}} />Logout
+        <img src={logoutIcon} style={{width:"40%",marginRight:10}} />Logout
         </button>
     </div>
   );
