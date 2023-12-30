@@ -5,4 +5,17 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow-x: scroll;
+  height: fit-content;
+  overflow-y: hidden;
+}
+
+
+.login {
+  position: fixed;
+  flex:1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

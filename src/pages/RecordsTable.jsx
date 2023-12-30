@@ -111,6 +111,11 @@ function RecordsTable({ searchTerm }) {
     width:"max-content"
   };
 
+  const heading = {
+    fontWeight:"bold",
+    textAlign:"center"
+  }
+
   return (
     <div style={{ padding: 30, backgroundColor: 'white', marginRight: 30, marginLeft: 30, borderRadius: 12}}>
       <div style={{ display: 'flex'}} >
@@ -144,6 +149,7 @@ function RecordsTable({ searchTerm }) {
        
       </div>
       <div style={{ borderRadius: 30 }}>
+      <p >Total Records: {filteredRecords.length}</p>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
           <thead>
             <tr>
@@ -168,6 +174,7 @@ function RecordsTable({ searchTerm }) {
             ))}
           </tbody>
         </table>
+        <p style={heading}>Total Records: {filteredRecords.length}</p>
       </div>
     </div>
   );

@@ -24,17 +24,20 @@ function App() {
 
  return (
   <>
-  <div className="app">
+  
   {isLoggedIn ? (
-      <>
+      <div className="app">
       <Dashboard/>
-      </>
-    ) : (
-      
+      </div>
+    ) 
+    
+    : (
+      <div className='login'>
+
       <Login/>
+      </div>
       
     )}
-    </div>
 </>
   );
 }

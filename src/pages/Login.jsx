@@ -36,7 +36,7 @@ const LoginPage = () => {
     borderRadius: '16px',
     textAlign: 'center',
     width:300,
-    height:400
+    height:450
   };
 
   const logoStyle = {
