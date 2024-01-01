@@ -11,6 +11,7 @@ function RecordsTable({ searchTerm }) {
   const [loanData, setLoanData] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState('All');
 
   const firebaseConfig = {
     apiKey: "AIzaSyBfP7hRKKLjiKeW7U2ScYIBH-vLaIYiFtI",
@@ -27,21 +28,29 @@ function RecordsTable({ searchTerm }) {
     }
 
     fetchData();
-  }, []);
+  },  [selectedFilter, startDate, endDate]);
 
   const fetchData = async () => {
     try {
       const database = firebase.database();
       const loansRef = database.ref('loans');
 
-      console.log(loansRef)
-      console.log('Firebase initialized:', firebase.apps.length > 0);
-      console.log('Database reference:', loansRef.toString());
-      
-      // Attach an asynchronous callback to read the data
-      loansRef.once('value').then((snapshot) => {
+      let query = loansRef;
+
+      if (selectedFilter === 'Today') {
+        query = query.orderByChild('createdAt').startAt(new Date().setHours(0, 0, 0, 0)).endAt(new Date().setHours(23, 59, 59, 999));
+      } else if (selectedFilter === 'Last 3 days') {
+        const threeDaysAgo = new Date();
+        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+        query = query.orderByChild('createdAt').startAt(threeDaysAgo.getTime());
+      } else if (selectedFilter === 'Last 7 days') {
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        query = query.orderByChild('createdAt').startAt(sevenDaysAgo.getTime());
+      }
+
+      query.once('value').then((snapshot) => {
         const data = snapshot.val();
-        console.log('Data fetched with once:', data);
         if (data) {
           // Convert the data object to an array
           const dataArray = Object.keys(data).map((key) => ({
@@ -68,6 +77,12 @@ function RecordsTable({ searchTerm }) {
 
   const handleEndDateChange = (date) => {
     setEndDate(date);
+  };
+
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+    setStartDate(null);
+    setEndDate(null);
   };
 
   const filteredRecords = loanData.filter((record) => {
@@ -147,9 +162,27 @@ function RecordsTable({ searchTerm }) {
           >Search</button>
         </div>
        
+       
       </div>
       <div style={{ borderRadius: 30,overflow: 'auto', maxHeight: '500px' }}>
-      <p >Total Records: {filteredRecords.length}</p>
+        <div className='row'>
+          <div style={{ marginRight: 'auto', display: 'flex', alignItems: 'center' }}>
+          <p >Total Records: {filteredRecords.length}</p>
+          </div>
+        
+        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+        
+            <label style={{ marginRight: 10, fontWeight: 'bold' }}>Filter:</label>
+            <select onChange={(e) => handleFilterChange(e.target.value)} value={selectedFilter}>
+              <option value="All">All</option>
+              <option value="Today">Today</option>
+              <option value="Last 3 days">Last 3 days</option>
+              <option value="Last 7 days">Last 7 days</option>
+            </select>
+          </div>
+
+        </div>
+     
         <table style={{width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
           <thead>
             <tr>

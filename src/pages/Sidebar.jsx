@@ -13,7 +13,7 @@ function Sidebar() {
     const stayOnMain = () =>{
     }
   return (
-    <div style={{ width: '200px', backgroundColor: '#fff', color: '#216FF4', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ width: '300px', backgroundColor: '#fff', color: '#216FF4', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img src={logo} alt="Logo" style={{ width: '70%', alignItems: 'center' }} />
       </div>
