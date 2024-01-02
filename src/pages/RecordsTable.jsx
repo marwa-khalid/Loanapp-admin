@@ -39,7 +39,22 @@ function RecordsTable({ searchTerm }) {
 
       if (selectedFilter === 'Today') {
         query = query.orderByChild('createdAt').startAt(new Date().setHours(0, 0, 0, 0)).endAt(new Date().setHours(23, 59, 59, 999));
-      } else if (selectedFilter === 'Last 3 days') {
+      }else if (selectedFilter === 'Yesterday') {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1); // Set the date to yesterday
+      
+        const startOfYesterday = new Date(yesterday);
+        startOfYesterday.setHours(0, 0, 0, 0); // Set the time to the beginning of yesterday
+      
+        const endOfYesterday = new Date(yesterday);
+        endOfYesterday.setHours(23, 59, 59, 999); // Set the time to the end of yesterday
+      
+        query = query
+          .orderByChild('createdAt')
+          .startAt(startOfYesterday.getTime())
+          .endAt(endOfYesterday.getTime());
+      }
+      else if (selectedFilter === 'Last 3 days') {
         const threeDaysAgo = new Date();
         threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
         query = query.orderByChild('createdAt').startAt(threeDaysAgo.getTime());
@@ -142,7 +157,7 @@ function RecordsTable({ searchTerm }) {
               selected={startDate}
               onChange={handleStartDateChange}
               dateFormat="dd . MM . yyyy" 
-              placeholderText={`${formattedCurrentDate()}`}
+              placeholderText={'02. 01. 2024'}
             />
           </div>
           <div >
@@ -152,7 +167,7 @@ function RecordsTable({ searchTerm }) {
             selected={endDate} 
             onChange={handleEndDateChange}
             dateFormat="dd . MM . yyyy" 
-            placeholderText={`${formattedCurrentDate()}`} />
+            placeholderText={'02. 01. 2024'} />
           </div>
           
         </div>
@@ -176,6 +191,7 @@ function RecordsTable({ searchTerm }) {
             <select onChange={(e) => handleFilterChange(e.target.value)} value={selectedFilter}>
               <option value="All">All</option>
               <option value="Today">Today</option>
+              <option value="Yesterday">Yesterday</option>
               <option value="Last 3 days">Last 3 days</option>
               <option value="Last 7 days">Last 7 days</option>
             </select>
