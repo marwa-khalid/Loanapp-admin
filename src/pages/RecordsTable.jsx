@@ -121,14 +121,6 @@ function RecordsTable({ searchTerm }) {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handleSearchClick = () => {
-    fetchData(); 
-  }
-
-  const formattedCurrentDate = () => {
-    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-    return new Date().toLocaleDateString(undefined, options).replace(/\//g, ' . ');
-  };
 
   const tableHeaderStyle = {
     background: '#216FF4',
@@ -173,11 +165,7 @@ function RecordsTable({ searchTerm }) {
           </div>
           
         </div>
-        <div style={{ marginLeft: 'auto' }}>
-          <button style={{ color:"#216FF4",height:41,width:145,borderRadius:12,borderColor:"#216FF4",marginTop:20,alignItems:"flex-end"}} 
-          onClick={handleSearchClick}
-          >Search</button>
-        </div>
+       
        
        
       </div>
