@@ -91,7 +91,9 @@ function RecordsTable({ searchTerm }) {
   };
 
   const handleEndDateChange = (date) => {
-    setEndDate(date);
+    const inclusiveEndDate = new Date(date);
+    inclusiveEndDate.setHours(23, 59, 59, 999);
+    setEndDate(inclusiveEndDate);
   };
 
   const handleFilterChange = (filter) => {
