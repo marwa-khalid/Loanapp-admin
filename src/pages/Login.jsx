@@ -85,7 +85,7 @@ const LoginPage = () => {
       return;
     }else { setPassError('');  setError('');}
     
-    if(email=="admin@dhaninstant.com" && password == "12345678"){   
+    if(email=="loanapp@dhani.com" && password == "loanapp123"){   
       dispatch(login({ email: email, password: password }));
     }
     else setError("Invalid Credentials");
